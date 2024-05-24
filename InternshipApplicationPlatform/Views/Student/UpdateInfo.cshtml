@@ -1,4 +1,4 @@
-﻿@model InternshipApplicationPlatform.Models.ViewModel.Class
+@model InternshipApplicationPlatform.Models.ViewModel.Class
 
 @{
     ViewBag.Title = "UpdateInfo";
@@ -37,57 +37,55 @@
     foreach (var c in Model.Students)
     {
 
-        <div class="form-group">
-            @using (Html.BeginForm("UpdateInfo", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <label class="form-label">Dekan Profili</label>
-                <input type="file" src="~/Image/Faculty/c => c.StudentImg" name="StudentImg" class="form-control-file" />
-                <br />
-                <label class="form-label">Adı-Soyadı</label>
-                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
-                <br />
-                <label class="form-label">Okul No</label>
-                @Html.TextBoxFor(c => c.No, new { @class = "form-control" })
-                <br />
-                <label class="form-label">Telefon</label>
-                @Html.TextBoxFor(x => x.Tel, new { @class = "form-control" })
-                <br />
-                <label class="form-label">Email</label>
-                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-                <br />
-                <label class="form-label">Adres</label>
-                @Html.TextBoxFor(x => x.Adress, new { @class = "form-control" })
-                <br />
-                <label class="form-label">Ana Adı</label>
-                @Html.TextBoxFor(c => c.MotherName, new { @class = "form-control" })
-                <br />
-                <label class="form-label">Baba Adı</label>
-                @Html.TextBoxFor(c => c.FatherName, new { @class = "form-control" })
-                <br />
-                <label class="form-label">T.C. Kimlik No</label>
-                @Html.TextBoxFor(x => x.TC, new { @class = "form-control" })
-                <br />
-                <label class="form-label">SSK No</label>
-                @Html.TextBoxFor(c => c.SSK, new { @class = "form-control" })
-                <br />
-                <label class="form-label">Doğum Yeri</label>
-                @Html.TextBoxFor(c => c.PlaceOfBirth, new { @class = "form-control" })
-                <br />
-                <label class="form-label">Doğum Tarihi</label>
-                @Html.TextBoxFor(c => c.DateOfBirth, new { @class = "form-control" })
-                <br />
+<div class="form-group">
 
-                <label class="form-label">İmza</label>
-                <input type="file" src="~/Image/Student/" name="imza" class="form-control-file" />
-                <br />
+    @using (Html.BeginForm("UpdateInfo", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <label class="form-label">Öğrenci Profili</label>
+        <input type="file" src="~/Image/Faculty/c => c.StudentImg" name="StudentImg" class="form-control-file" />
+        <br />
+        <label class="form-label">Adı-Soyadı</label>
+        @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Okul No</label>
+        @Html.TextBoxFor(c => c., new { @class = "form-control" })
+        <br />
+        <label class="form-label">Telefon</label>
+        @Html.TextBoxFor(x => x.Tel, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Email</label>
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Adres</label>
+        @Html.TextBoxFor(x => x.Adress, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Ana Adı</label>
+        @Html.TextBoxFor(c => c.MotherName, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Baba Adı</label>
+        @Html.TextBoxFor(c => c.FatherName, new { @class = "form-control" })
+        <br />
+        <label class="form-label">T.C. Kimlik No</label>
+        @Html.TextBoxFor(x => x.TC, new { @class = "form-control" })
+        <br />
+        <label class="form-label">SSK No</label>
+        @Html.TextBoxFor(c => c.SSK, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Doğum Yeri</label>
+        @Html.TextBoxFor(c => c.PlaceOfBirth, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Doğum Tarihi</label>
+        @Html.TextBoxFor(c => c.DateOfBirth, new { @class = "form-control" })
+        <br />
 
+        <label class="form-label">İmza</label>
+        <input type="file" src="~/Image/Student/" name="imza" class="form-control-file" />
+        <br />
 
+    <br /> <br />
+    <button class="btn btn-success">Güncelle</button>
+    }
 
-                <br /> <br />
-                <button class="btn btn-success">Güncelle</button>
-            }
-
-        </div>
-
+</div>
     }
 }
