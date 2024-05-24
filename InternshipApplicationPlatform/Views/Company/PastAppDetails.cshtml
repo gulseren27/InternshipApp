@@ -1,4 +1,5 @@
-﻿
+@model InternshipApplicationPlatform.Models.ViewModel.Class
+
 @{
     ViewBag.Title = "PastAppDetails";
     Layout = "~/Views/Shared/_CompanyLayout.cshtml";
@@ -68,307 +69,326 @@
 </style>
 <div>
 
-    <br />
 
-    <h2>ERZURUM TEKNİK ÜNİVERSİTESİ / Mühendislik ve Mimarlık Fakültesi</h2>
-    <br />
-    <h2><strong>ZORUNLU STAJ FORMU</strong></h2>
+    @using (Html.BeginForm("PastAppDetails", "Company", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        foreach (var u in Model.Users.Where(u => u.Role == "Öğrenci").ToList())
+        {
+            foreach (var c in Model.Internships)
+            {
+                foreach (var s in Model.Students)
+                {
+                    <br />
 
-    <hr />
+                    <h2>ERZURUM TEKNİK ÜNİVERSİTESİ / Mühendislik ve Mimarlık Fakültesi</h2>
+                    <br />
+                    <h2><strong>ZORUNLU STAJ FORMU</strong></h2>
 
-    <div class="main-content" style="scroll-behavior: smooth;">
-        <div class="makam"
-             style="display: flex; align-items: center; justify-content: center; text-align: justify;  ">
-            <label><strong>İLGİLİ MAKAMA</strong></label>
-        </div>
-        <p>
-            Aşağıdaki kimlik bilgileri yazılı öğrencimizin <strong>toplam 60 gün </strong>staj yapma zorunluluğu vardır.Öğrencimizin, kurum/kuruluşunuzda yapmak istediği
-            <label>............</label> gün staj talebinin uygun bulunup-bulunmadığının, formda 3. Bölüm bilgileri ve onayı ile belirtilemsini arz/rica eder, göstereceğiniz ilgiye teşekkür ederim.
-        </p>
-        <br />
-        <div class="imza1" style="float: right; ">
-            İmza:
-            <label>..........................</label>/Bölüm Başkanı
-        </div>
-    </div>
-    <br />
-    <hr />
-    <div style="background-color: #3e86b08a; padding-left: 15px">
-        <strong> 1) ÖĞRENCİ KİMLİK BİLGİLERİ</strong>  (Öğrenci tarafından <strong>eksiksiz</strong> doldurulmalıdır.)
-    </div>
-    <hr />
-
-    <div class="container" style="display: flex; padding-left: 45px">
-
-        <table class="half-width" style=" flex: 2;">
-
-            <tr>
-                <td><label for="ad-soyad">Adı ve Soyadı</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-
-            </tr>
-            <tr>
-                <td><label for="no">Öğrenci No</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-            </tr>
-            <tr>
-                <td><label for="bolum">Bölümü</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-            </tr>
-            <tr>
-                <td><label for="yıl">Öğretim Yılı/Dönemi</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-            </tr>
-
-            <tr>
-                <td><label for="telefon">Telefon</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-            </tr>
-            <tr>
-                <td><label for="email">E-Posta</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-            </tr>
-            <tr>
-                <td><label for="adres">İkametgah Adresi</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-            </tr>
+                    <hr />
 
 
-        </table>
 
-        <div class="half-width" style="flex: 1; padding: 50px;  ">
-            <div style="display: flex; justify-content: center;  align-items: center; border: 1px solid black; height:200px; width:150px"><img src="" alt="Image"></div>
-            <br />
-
-        </div>
-    </div>
-    <hr />
-    <div style="background-color: #3e86b08a; padding-left: 15px">
-        <strong> 2) STAJ YAPILACAK KURUM/KURULUŞUN </strong>  (Öğrenci tarafından <strong>eksiksiz</strong> doldurulmalıdır.)
-    </div>
-    <hr />
-    <div style="padding-left: 45px">
-        <table>
-
-            <tr>
-                <td><label for="ad-tel">Adı</label></td>
-                <td><input type="text" id="ad-tel" name="ad-tel" required></td>
-            </tr>
-            <tr>
-                <td><label for="telefon">Telefon</label></td>
-                <td><input type="text" id="tel" name="tel" placeholder="+90" required></td>
-            </tr>
-            <tr>
-                <td><label for="adres">Adresi</label></td>
-                <td><input type="text" id="adres" name="adres" required></td>
-            </tr>
-
-        </table>
-    </div>
-
-    <hr />
-    <div style="background-color: #3e86b08a; padding-left: 15px">
-        <strong> 3) STAJ YERİ YETKİLİSİNİN </strong>  (Staj yapılacak kurum/kuruluş yetkilisi tarafından <strong>eksiksiz</strong> doldurulmalı ve onaylanmalıdır.)
-    </div>
-    <hr />
-
-    <div class="container2" style="display: flex; padding-left: 45px">
-
-        <table class="half-width" style=" flex: 2;">
-
-            <tr>
-                <td><label for="ad-soyad">Adı ve Soyadı</label></td>
-                <td><input type="text" id="isim" name="" required></td>
-            </tr>
-            <tr>
-                <td><label for="unvan">Görev ve Unvanı</label></td>
-                <td><input type="text" id="unvan" name="unvan" required></td>
-            </tr>
-            <tr>
-                <td><label for="email">E-Posta</label></td>
-                <td><input type="email" id="email" name="" required></td>
-            </tr>
-            <tr>
-                <td><label for="tarih">Tarih</label></td>
-                <td><input type="text" id="tarih" name="" placeholder="GG/AA/YYYY" required></td>
-            </tr>
-
-
-        </table>
-
-        <div class="half-width" style="flex: 1; padding: 50px;  ">
-            <div style="display: flex; justify-content: center;  align-items: center;"><strong>Kurumumuzda/İşletmemizde staj yapması uygundur.</strong></div>
-            <br />
-            Kaşe/İmza
-        </div>
-    </div>
-    <hr />
-    <div>
-        <div style="background-color: #3e86b08a; padding-left: 15px">
-            <strong> 4) STAJ TARİHLERİ </strong>  (Öğrenci tarafından <strong>eksiksiz</strong> doldurulmalıdır.)
-        </div>
-        <br />
-        <table>
-            <tr>
-                <td><label for="tarih">Başlama Tarihi</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-
-                <td><label for="tarih">Bitiş Tarihi</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-
-                <td><label for="gun">Süresi(Staj Günü)</label></td>
-                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label></td>
-            </tr>
-        </table>
-    </div>
-    <hr />
-    <div>
-        <div style="background-color: #3e86b08a; padding-left: 15px">
-            <strong> 5) ÖĞRENCİNİN NÜFUS KAYIT ve SİGORTA BİLGİLERİ </strong>  (Öğrenci tarafından <strong>eksiksiz</strong> doldurulmalıdır.)
-        </div>
-    </div>
-    <div class="container3" style="display: flex; padding-left: 45px">
-        <table>
-            <tr>
-                <td>
-                    <div class="label1">
-
-                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label>
-                        <label for="ad" style="width: 100px; float: left ">Adı</label><br>
-
-                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label>
-                        <label for="soyad" style="width: 100px; float: left ">Soyadı</label><br>
-
-                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label>
-                        <label for="tc" style="width: 100px; float: left ">T.C. Kimlik No</label><br>
-
-                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label>
-                        <label for="ssk" style="width: 100px; float: left ">SSK No(varsa)</label><br>
+                    <div class="main-content" style="scroll-behavior: smooth;">
+                        <div class="makam"
+                             style="display: flex; align-items: center; justify-content: center; text-align: justify;  ">
+                            <label><strong>İLGİLİ MAKAMA</strong></label>
+                        </div>
+                        <p>
+                            Aşağıdaki kimlik bilgileri yazılı öğrencimizin <strong>toplam 60 gün </strong>staj yapma zorunluluğu vardır.Öğrencimizin, kurum/kuruluşunuzda yapmak istediği
+                            <label value="@c.InternshipTime">............</label> gün staj talebinin uygun bulunup-bulunmadığının, formda 3. Bölüm bilgileri ve onayı ile belirtilemsini arz/rica eder, göstereceğiniz ilgiye teşekkür ederim.
+                        </p>
+                        <br />
+                        <div class="imza1" style="float: right; ">
+                            İmza:
+                            <label type="image" name="" value="@c.HeadOfDepartmentSignature" required></label>
+                            <label value="@c.HeadOfDepartmentName">..........................</label>/Bölüm Başkanı
+                        </div>
                     </div>
-                </td>
-                <td>
-                    <div class="label1">
-
-                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label>
-                        <label for="Babaad" style="width: 100px; float: left ">Baba Adı</label><br>
-
-                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label>
-                        <label for="Anaad" style="width: 100px; float: left ">Ana Adı</label><br>
-
-                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label>
-                        <label for="dYer" style="width: 100px; float: left ">Doğum Yeri</label><br>
-
-                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white"></label>
-                        <label for="dTarih" style="width: 100px; float: left ">Doğum Tarihi</label><br>
-
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label for="guvence">Sağlık Güvencesi (İşaretleyiniz)</label><br>
+                    <br />
+                    <hr />
+                    <div style="background-color: #3e86b08a; padding-left: 15px">
+                        <strong> 1) ÖĞRENCİ KİMLİK BİLGİLERİ</strong>  (Öğrenci tarafından <strong>eksiksiz</strong> doldurulmalıdır.)
                     </div>
                     <hr />
-                    <div class="checkboxContainer">
 
-                        <input type="checkbox" id="checkbox1" name="checkbox1" class="checkbox" disabled>
-                        <label for="checkbox1" style="width: 100px; float: left">Kendisi</label>
+                    <div class="container" style="display: flex; padding-left: 45px">
 
-                        <input type="checkbox" id="checkbox2" name="checkbox2" class="checkbox" disabled>
-                        <label for="checkbox2" style="width: 100px; float: left">Annesi/Babası</label>
+                        <table class="half-width" style=" flex: 2;">
 
-                        <input type="checkbox" id="checkbox3" name="checkbox3" class="checkbox" disabled>
-                        <label for="checkbox3" style="width: 100px; float: left">Yeşil Kart</label>
+                            <tr>
+                                <td><label for="ad-soyad">Adı ve Soyadı</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@u.FullName"></label></td>
 
-                        <input type="checkbox" id="checkbox3" name="checkbox4" class="checkbox" disabled>
-                        <label for="checkbox4" style="width: 100px; float: left">Yok</label>
-                    </div>
-                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="no">Öğrenci No</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@s.No"></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="bolum">Bölümü</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.StudentDepartment"></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="yıl">Öğretim Yılı/Dönemi</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.AcademicYear"></label></td>
+                            </tr>
 
-            </tr>
-        </table>
-    </div>
+                            <tr>
+                                <td><label for="telefon">Telefon</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@u.Tel"></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">E-Posta</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@u.Email"></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="adres">İkametgah Adresi</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@u.Adress"></label></td>
+                            </tr>
 
-    <hr />
 
-    <div class="container4" style="display: flex; padding-left: 45px; ">
-        <table>
-            <tr>
-                <td>
-                    <div>
-                        <label for="onay1" style="background-color: #3e86b08a; ">Bölüm Staj Komisyonu Başkan Onayı</label><br>
-                        <hr />
-                        <div style="height: 200px; width: 200px; text-align: center">
-                            Kaşe/İmza:
-                            <p style="position: relative; margin: 150px 0px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; ">Tarih:  ....../....../20.....</p>
+                        </table>
+
+                        <div class="half-width" style="flex: 1; padding: 50px;  ">
+                            <div style="display: flex; justify-content: center;  align-items: center; border: 1px solid black; height:200px; width:150px"><img src="" alt="Image" value="@s.StudentImg"></div>
+                            <br />
+
                         </div>
                     </div>
-                </td>
-                <td>
-                    <div>
-                        <label for="onay2" style=" background-color: #3e86b08a; ">Dekanlık Onayı(Dekan Yardımcısı)</label><br>
-                        <hr />
-                        <div style="height: 200px; width: 200px; text-align: center">
-                            Kaşe/İmza:
-                            <p style="position: relative; margin: 150px 0px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; ">Tarih:  ....../....../20.....</p>
+                    <hr />
+                    <div style="background-color: #3e86b08a; padding-left: 15px">
+                        <strong> 2) STAJ YAPILACAK KURUM/KURULUŞUN </strong>  (Öğrenci tarafından <strong>eksiksiz</strong> doldurulmalıdır.)
+                    </div>
+                    <hr />
+                    <div style="padding-left: 45px">
+                        <table>
+
+                            <tr>
+                                <td><label for="ad-tel">Adı</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.CompanyName" required></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="telefon">Telefon</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" placeholder="+90" value="@c.CompanyTel" required></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="adres">Adresi</label></td>
+                                <td><label  name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.CompanyAddres" required></label></td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                    <hr />
+                    <div style="background-color: #3e86b08a; padding-left: 15px">
+                        <strong> 3) STAJ YERİ YETKİLİSİNİN </strong>  (Staj yapılacak kurum/kuruluş yetkilisi tarafından <strong>eksiksiz</strong> doldurulmalı ve onaylanmalıdır.)
+                    </div>
+                    <hr />
+
+                    <div class="container2" style="display: flex; padding-left: 45px">
+
+                        <table class="half-width" style=" flex: 2;">
+
+                            <tr>
+                                <td><label for="ad-soyad">Adı ve Soyadı</label></td>
+                                <td><label  name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.CompanyGuyName + @c.CompanyGuySurname" required></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="unvan">Görev ve Unvanı</label></td>
+                                <td><label  name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.CompanyGuyTitle" required></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">E-Posta</label></td>
+                                <td><label  name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.CompanyGuyMail" required></label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="tarih">Tarih</label></td>
+                                <td><label  name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" placeholder="GG/AA/YYYY" value="@c.CompanyApprovalDate" required></label></td>
+                            </tr>
+
+
+                        </table>
+
+                        <div class="half-width" style="flex: 1; padding: 50px;  ">
+                            <div style="display: flex; justify-content: center;  align-items: center;"><strong>Kurumumuzda/İşletmemizde staj yapması uygundur.</strong></div>
+                            <br />
+                            Kaşe/İmza
+                            <label type="image" name="" value="@c.CompanyGuySignature" required></label>
                         </div>
                     </div>
-                </td>
-                <td>
+                    <hr />
                     <div>
-                        <label for="onay3" style=" background-color: #3e86b08a; ">S.K.S Daire Başkanlığı Onayı</label><br>
-                        <hr />
-                        <div style="height:200px; width:200px; text-align:center">
-                            Kaşe/İmza:
-                            <p style="position: relative; margin: 150px 0px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; ">Tarih:  ....../....../20.....</p>
+                        <div style="background-color: #3e86b08a; padding-left: 15px">
+                            <strong> 4) STAJ TARİHLERİ </strong>  (Öğrenci tarafından <strong>eksiksiz</strong> doldurulmalıdır.)
+                        </div>
+                        <br />
+                        <table>
+                            <tr>
+                                <td><label for="tarih">Başlama Tarihi</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.InternshipStart"></label></td>
+
+                                <td><label for="tarih">Bitiş Tarihi</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.InternshipEnd"></label></td>
+
+                                <td><label for="gun">Süresi(Staj Günü)</label></td>
+                                <td><label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@c.InternshipTime"></label></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr />
+                    <div>
+                        <div style="background-color: #3e86b08a; padding-left: 15px">
+                            <strong> 5) ÖĞRENCİNİN NÜFUS KAYIT ve SİGORTA BİLGİLERİ </strong>  (Öğrenci tarafından <strong>eksiksiz</strong> doldurulmalıdır.)
                         </div>
                     </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+                    <div class="container3" style="display: flex; padding-left: 45px">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="label1">
 
-    <hr />
-    <div>
-        <p style="display: flex; padding-left: 35px; ">
-            Bu belge üzerindeki bilgilerin doğru olduğunu beyan ediyor ve yanlış beyan ya da staj yerine gitmeme veya yarıda bırakma gibi durumlarda sigorta işlemleri nedeni ile doğacak yasal para cezasını ödeyeceğimi taahhüt ediyorum.
-            <br />
-        <p style="display: flex; padding-left: 45px; ">Staj evrakının hazırlanmasını arz ederim.</p>
+                                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@u.Name"></label>
+                                        <label for="ad" style="width: 100px; float: left ">Adı</label><br>
 
-        <div class="imza2" style="float: right; ">
+                                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@u.Surname"></label>
+                                        <label for="soyad" style="width: 100px; float: left ">Soyadı</label><br>
 
-            <label>Öğrencinin Adı-Soyadı:  .......................................... </label>
-            <br />
-            <label>Tarih/İmza: ..........................             ........../........./20.........</label>
+                                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@u.TC"></label>
+                                        <label for="tc" style="width: 100px; float: left ">T.C. Kimlik No</label><br>
 
-        </div>
-    </div>
-    <br />
-    <br />
-    <hr />
-    <div>
-        <div style="background-color: #3e86b08a; padding-left: 15px">
-            <strong>STAJ UYGULAMA ESASLARI </strong>
-        </div>
-        <hr />
+                                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@s.SSK"></label>
+                                        <label for="ssk" style="width: 100px; float: left ">SSK No(varsa)</label><br>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="label1">
 
-        <p>
-            	Staja devam zorunludur. Geçerli mazeretler nedeniyle devam edilemeyen günler, her bir staj döneminin % 20’sinden fazla olmamak kaydıyla telafi edilebilir.<br />
-            	Stajını mazereti dolayısıyla tamamlayamayacağını mazeretinin başlangıcından itibaren 5 (beş) işgünü içinde birimine bildirmeyen öğrenciler için oluşturdukları kamu zararı nedeni ile disiplin soruşturması açılır.<br />
-            	SGK sistemine öğrenciler için bir ayda iki kez veri girişi yapılamayacağından bir öğrenciye aynı ay içerisinde ikinci kez staj yaptırılamaz.<br />
-            	Staj süresinde, remi tatil günleri sayılmaz ve hafta, kamu kurumlarında 5 iş günü, özel kuruluşlarda Cumartesi çalışılıyor ise 6 gün olarak dikkate alınır.<br />
-            <br />
+                                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@s.FatherName"></label>
+                                        <label for="Babaad" style="width: 100px; float: left ">Baba Adı</label><br>
 
-            <strong><span style="background-color: #FFFF00"><u>NOT</u></span>: 5510 sayılı yasa gereğince öğrencinin iş kazası ve meslek hastalıkları sigorta primlerini ödeme yükümlüsü Erzurum Teknik Üniversitesi Rektörlüğü’dür.</strong>
-        </p>
-    </div>
-    <br />
-    <p style="color: grey; padding-left:25px"> Bu belge , öğrenci tarafından bir örneği kurum/kuruluşa verilmek üzere <strong><u>tek nüsha halinde</u></strong> düzenlenir</p>
-    <br />
+                                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@s.MotherName"></label>
+                                        <label for="Anaad" style="width: 100px; float: left ">Ana Adı</label><br>
+
+                                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@s.PlaceOfBirth"></label>
+                                        <label for="dYer" style="width: 100px; float: left ">Doğum Yeri</label><br>
+
+                                        <label name="" style="border: 1px solid black; width:185px; height:25px; background-color:white" value="@s.DateOfBirth"></label>
+                                        <label for="dTarih" style="width: 100px; float: left ">Doğum Tarihi</label><br>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label for="guvence">Sağlık Güvencesi (İşaretleyiniz)</label><br>
+                                    </div>
+                                    <hr />
+                                    <div class="checkboxContainer">
+
+                                        <input type="checkbox" id="checkbox1" name="checkbox1" class="checkbox" disabled> @*(c.StudentsHealthInsurance ? "" : "checked"  eklenecek*@
+                                        <label for="checkbox1" style="width: 100px; float: left">Kendisi</label>
+
+                                        <input type="checkbox" id="checkbox2" name="checkbox2" class="checkbox" disabled>
+                                        <label for="checkbox2" style="width: 100px; float: left">Annesi/Babası</label>
+
+                                        <input type="checkbox" id="checkbox3" name="checkbox3" class="checkbox" disabled>
+                                        <label for="checkbox3" style="width: 100px; float: left">Yeşil Kart</label>
+
+                                        <input type="checkbox" id="checkbox3" name="checkbox4" class="checkbox" disabled>
+                                        <label for="checkbox4" style="width: 100px; float: left">Yok</label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                    <hr />
+
+                    <div class="container4" style="display: flex; padding-left: 45px; ">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label for="onay1" style="background-color: #3e86b08a; ">Bölüm Staj Komisyonu Başkan Onayı</label><br>
+                                        <hr />
+                                        <div style="height: 200px; width: 200px; text-align: center">
+                                            Kaşe/İmza:
+                                            <label type="image" name="" value="@c.DepartmentCommitteeChairmanSignature" required></label>
+                                            <p style="position: relative; margin: 150px 0px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; " value="@c.DepartmentCommitteeChairmanApproval">Tarih:  ....../....../20.....</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label for="onay2" style=" background-color: #3e86b08a; ">Dekanlık Onayı(Dekan Yardımcısı)</label><br>
+                                        <hr />
+                                        <div style="height: 200px; width: 200px; text-align: center">
+                                            Kaşe/İmza:
+                                            <label type="image" name="" value="@c.DeanerySignature" required></label>
+                                            <p style="position: relative; margin: 150px 0px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; " value="@c.DeaneryApproval">Tarih:  ....../....../20.....</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <label for="onay3" style=" background-color: #3e86b08a; ">S.K.S Daire Başkanlığı Onayı</label><br>
+                                        <hr />
+                                        <div style="height:200px; width:200px; text-align:center">
+                                            Kaşe/İmza:
+                                            <label type="image" name="" value="" required></label>
+                                            <p style="position: relative; margin: 150px 0px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; align-items: center; ">Tarih:  ....../....../20.....</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <hr />
+                    <div>
+                        <p style="display: flex; padding-left: 35px; ">
+                            Bu belge üzerindeki bilgilerin doğru olduğunu beyan ediyor ve yanlış beyan ya da staj yerine gitmeme veya yarıda bırakma gibi durumlarda sigorta işlemleri nedeni ile doğacak yasal para cezasını ödeyeceğimi taahhüt ediyorum.
+                            <br />
+                        <p style="display: flex; padding-left: 45px; ">Staj evrakının hazırlanmasını arz ederim.</p>
+
+                        <div class="imza2" style="float: right; ">
+
+                            <label value="@u.FullName">Öğrencinin Adı-Soyadı:  .......................................... </label>
+                            <br />
+                            <label value="@u.Signature">Tarih/İmza: ..........................</label><label value="@c.DeliveryDateToTheCompany">........../........./20.........</label>
+
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <hr />
+                    <div>
+                        <div style="background-color: #3e86b08a; padding-left: 15px">
+                            <strong>STAJ UYGULAMA ESASLARI </strong>
+                        </div>
+                        <hr />
+
+                        <p>
+                            	Staja devam zorunludur. Geçerli mazeretler nedeniyle devam edilemeyen günler, her bir staj döneminin % 20’sinden fazla olmamak kaydıyla telafi edilebilir.<br />
+                            	Stajını mazereti dolayısıyla tamamlayamayacağını mazeretinin başlangıcından itibaren 5 (beş) işgünü içinde birimine bildirmeyen öğrenciler için oluşturdukları kamu zararı nedeni ile disiplin soruşturması açılır.<br />
+                            	SGK sistemine öğrenciler için bir ayda iki kez veri girişi yapılamayacağından bir öğrenciye aynı ay içerisinde ikinci kez staj yaptırılamaz.<br />
+                            	Staj süresinde, remi tatil günleri sayılmaz ve hafta, kamu kurumlarında 5 iş günü, özel kuruluşlarda Cumartesi çalışılıyor ise 6 gün olarak dikkate alınır.<br />
+                            <br />
+
+                            <strong><span style="background-color: #FFFF00"><u>NOT</u></span>: 5510 sayılı yasa gereğince öğrencinin iş kazası ve meslek hastalıkları sigorta primlerini ödeme yükümlüsü Erzurum Teknik Üniversitesi Rektörlüğü’dür.</strong>
+                        </p>
+                    </div>
+                    <br />
+                    <p style="color: grey; padding-left:25px"> Bu belge , öğrenci tarafından bir örneği kurum/kuruluşa verilmek üzere <strong><u>tek nüsha halinde</u></strong> düzenlenir</p>
+                    <br />
 
 
 
-    <br />
-    <br />
+                    <br />
+                    <br />
+                }
+            }
+        }
+    }
 </div>
-
 
