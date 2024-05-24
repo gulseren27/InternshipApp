@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+    @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @class = "login100-form validate-form flex-sb flex-w", onsubmit = "return validateForm()" }))
+    {
+        <span class="login100-form-title">
+            <a href="#">
+                <img src="~/Image/Layout/etu-logo.jpg" alt="ETU" style="width:135px; height:135px;">
+            </a>
+        </span>
+        <div class="p-t-31 p-b-9">
+            <span class="txt1">
+                *Ad
+            </span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Ad gerekli">
+            <input class="input100" type="text" name="Name" >
+            <span class="focus-input100"></span>
+        </div>
+        <div class="p-t-31 p-b-9">
+            <span class="txt1">
+                *Soyad
+            </span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Soyad gerekli">
+            <input class="input100" type="text" name="Surname" >
+            <span class="focus-input100"></span>
+        </div>
+        <div class="p-t-31 p-b-9">
+            <span class="txt1">
+                *T.C. Kimlik Numarası
+            </span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="T.C. Kimlik Numarası gerekli">
+            <input class="input100" type="text" name="TC" >
+            <span class="focus-input100"></span>
+        </div>
+        <div class="p-t-31 p-b-9">
+            <span class="txt1">
+                *Kullanıcı mail adresi
+            </span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="E-posta adresi gerekli">
+            <input class="input100" type="text" name="Email" >
+            <span class="focus-input100"></span>
+        </div>
+        <div class="p-t-31 p-b-9">
+            <span class="txt1">
+                *Telefon
+            </span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Telefon numarası gerekli">
+            <input class="input100" type="text" name="Tel" placeholder="05xxxxxxxxx" style="color:#808080 !important;">
+            <span class="focus-input100"></span>
+        </div>
+        <div class="p-t-13 p-b-9">
+            <span class="txt1">
+                *Şifre
+            </span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Şifre gerekli">
+            <input class="input100" type="password" name="Password" >
+            <span class="focus-input100"></span>
+        </div>
+        <div>
+            <p style="color:red !important; font-style:italic;">
+                *Lütfen kayıt işlemi yaptıktan sonra profilinizden eksik hesap bilgilerinizi doldurunuz.
+                <br /><br />
+            </p>
+            <button type="submit" class="login100-form-btn">
+                Kayıt Ol
+            </button>
+        </div>
+    }
+</div>
+
+<script>
+    function validateForm() {
+        var inputs = document.querySelectorAll('.validate-input');
+
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i].querySelector('input');
+            var validationMessage = input.getAttribute('data-validate');
+            var value = input.value.trim();
+
+            if (value === '') {
+                alert(validationMessage);
+                return false;
+            }
+
+            // TC Kimlik Numarası validasyonu
+            if (input.name === "TC" && (!/^\d{11}$/.test(value))) {
+                alert("T.C. Kimlik Numarası 11 haneli bir sayı olmalıdır.");
+                return false;
+            }
+
+            // Telefon numarası validasyonu
+            if (input.name === "Tel" && (!/^\d+$/.test(value))) {
+                alert("Telefon numarası sadece rakamlardan oluşmalıdır.");
+                return false;
+            }
+        }
+        return true;
+    }
+</script>

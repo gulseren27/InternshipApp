@@ -1,0 +1,96 @@
+﻿@model InternshipApplicationPlatform.Models.ViewModel.Class
+@{
+    ViewBag.Title = "NewRegisters";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #b5b5b578;
+            font-weight: bold;
+        }
+
+    #basvuru {
+        text-align: center;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table tr:hover {
+        background-color: #e2e2e2;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 3px;
+        font-weight: normal;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
+</style>
+<br />
+
+<h2 id="basvuru">Yeni Kayıtlananlar</h2>
+<br />
+<a href="@Url.Action("UploadUsers", "Admin")" class="btn btn-primary">
+    <img src="~/Image/Layout/excel.png" alt="Excel" style="width: 20px; height: 20px; margin-right: 5px;">
+    Excel Toplu Yükleme
+</a>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Ad</th>
+            <th scope="col">Soyadı</th>
+            <th scope="col">Mail</th>
+            <th scope="col"> Rol</th>
+            <th scope="col"> Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td scope="row">#</td>
+                <td>@user.Name</td>
+                <td>@user.Surname</td>
+                <td>@user.Email</td>
+                <td style="width: 20%;">
+                    Rolsüz
+                </td>
+                <td style="width: 8%;">
+                    <a class="btn btn-warning" href="@Url.Action("UpdateRole", "Admin", new { id = user.UserId })">Rol Ata</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

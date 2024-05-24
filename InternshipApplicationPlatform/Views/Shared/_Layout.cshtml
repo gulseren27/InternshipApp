@@ -1,0 +1,163 @@
+﻿@{ Layout = null; }
+
+
+<style>
+    .nav-sidebar .nav-link p,
+    .nav-sidebar .nav-link i {
+        color: #f5f9ff !important;
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="~/Image/Layout/etu-background.png">
+    <title>ETÜ | Staj İşlemleri</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position:fixed; background-color: #3e86b0 !important;">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link brand-image">
+                <img src="~/Image/Layout/etu-kare-logo.png" alt="ETU" style="width: 100px; margin-left: 70px; filter: drop-shadow(0 0 0 transparent); opacity: 1;">
+                <span class="brand-text font-weight-light" style="margin-left: 15px;"></span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                @*<div class="user-panel center mt-4 pb-1 mb-4">
+                        <div class="image">
+                            <img src="" class="img-circle elevation-2" alt="">
+                        </div>
+                        <div class="info">
+                            <a href="#" class="d-block">Online Sipariş</a>
+                        </div>
+                    </div>*@
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        <li class="nav-item has-treeview ">
+                            <a href=" /Faculty/IndexFaculty" class="nav-link ">
+                                <i class="fas fa-home nav-icon"></i>
+                                <p>
+                                    Anasayfa
+                                </p>
+                            </a>
+                        </li>
+                        @*<li class="nav-item has-treeview ">
+                                <a href="/About/Index/" class="nav-link ">
+                                    <i class="fas fa-tree nav-icon"></i>
+                                    <p>
+                                        Hakkımızda
+                                    </p>
+                                </a>
+                            </li>*@
+                        <li class="nav-item has-treeview">
+                            <a href="/Faculty/ReceivedByMe" class="nav-link">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>
+                                    Gelen Başvurular
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="/Faculty/ListPast" class="nav-link">
+                                <i class="fas fa-check-circle nav-icon"></i>
+                                <p>
+                                    Geçmiş Stajlar
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="/Contact/Index/" class="nav-link">
+                                <i class=" far fa-envelope nav-icon"></i>
+                                <p>
+                                    Mail
+                                </p>
+                            </a>
+                        </li>
+                        @*<li class="nav-item">
+                                <a href="pages/calendar.html" class="nav-link">
+                                    <i class="nav-icon fas fa-calendar-alt"></i>
+                                    <p>
+                                        Yetkilendirme
+                                    </p>
+                                </a>
+                            </li>*@
+                        @*<li class="nav-item has-treeview">
+                                <a href="/Gallery/Index/" class="nav-link">
+                                    <i class="nav-icon fas fa-envelope"></i>
+                                    <p>
+                                        Galeri
+                                    </p>
+                                </a>
+                            </li>*@
+                        @*<li class="nav-item has-treeview">
+                                <a href="/ErrorPage/Page404/" class="nav-link">
+                                    <i class="nav-icon fas fa-envelope"></i>
+                                    <p>
+                                        Hata Sayfaları
+                                    </p>
+                                </a>
+                            </li>*@
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <p>
+                                    Oturumu Kapat
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <div class="content">
+                @RenderBody()
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model InternshipApplicationPlatform.Models.Company
+@{
+    ViewBag.Title = "UpdateInformation";
+    Layout = "~/Views/Shared/_CompanyLayout.cshtml";
+}
+
+<style>
+
+    .form-label {
+        font-weight: bold;
+        color: black !important;
+    }
+
+    .form-control {
+        width: calc(100% - 20px);
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .btn-success {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<br />
+<h3 class="title-5 m-b-35" style="text-align: center;"> <strong>Firma Bilgileri Güncelleme Sayfası</strong></h3>
+
+
+<div class="form-group">
+    @using (Html.BeginForm("UpdateInformation", "Company", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <label class="form-label">Firma Logosu</label>
+        <input type="file" src="~/Image/Company/x => x.Logo" name="logo" class="form-control-file" />
+        <br />
+        <label class="form-label">Firma Adı</label>
+        @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Firma E-mail</label>
+        @Html.TextBoxFor(x => x.FirmaMail, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Firma Adres</label>
+        @Html.TextBoxFor(x => x.Adress, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Firma Tel</label>
+        @Html.TextBoxFor(x => x.Tel, new { @class = "form-control" })
+        <br />
+        <label class="form-label">Staj Yetkilisi Unvanı</label>
+        @Html.TextBoxFor(x => x.Meslek, new { @class = "form-control" })
+
+        <br /> <br />
+        <button class="btn btn-success">Güncelle</button>
+    }
+</div>
+

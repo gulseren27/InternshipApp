@@ -1,0 +1,146 @@
+﻿@model InternshipApplicationPlatform.Models.ViewModel.Class
+
+@{
+    ViewBag.Title = "GetListAllInternships";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #b5b5b578;
+            font-weight: bold;
+        }
+
+    #gecmis-baslik {
+        text-align: center;
+    }
+</style>
+<br />
+<h2 id="gecmis-baslik">Geçmiş Stajlar</h2>
+<br />
+
+@{ string color = "";}
+<br />
+@using (Html.BeginForm("Index", "Item", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("p", null, new { @class = "search-textbox", placeholder = "Kuruma Göre Ara" })
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+@using (Html.BeginForm("Index", "Item", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("p", null, new { @class = "search-textbox", placeholder = "Öğrenci No Ara" })
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Öğrenci Ad-Soyad</th>
+            <th scope="col">Kurum Ad</th>
+            <th scope="col">Staj Tarihi</th>
+            <th scope="col">Staj Süresi</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var c in Model.Internships)
+        {
+            foreach (var x in Model.Users)
+            {
+
+
+            <tr>
+                <td scope="row">2</td>
+                <td>@x.FullName</td>
+                <td>@c.CompanyName</td>
+                <td>@c.InternshipStart - @c.InternshipEnd</td>
+                <td>@c.InternshipTime</td>
+                <td>@x.Email</td>
+                <td>
+                    @if (c.Status == "Onaylandı")
+                    {
+                        <span class="badge badge-success">Onaylandı</span>
+                    }
+                    else if (c.Status == "Reddedildi")
+                    {
+                        <span class="badge badge-danger">Reddedildi</span>
+                        <span onclick="showPopup()" style="padding-left:20px;" class="badge badge-light">
+                            <i class="fas fa-book"></i> Oku
+                        </span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">3</td>
+                <td>İlknur Akcaba </td>
+                <td>Larry the Bird</td>
+                <td>02.07.2020 - 02.10.2020</td>
+                <td>25</td>
+                <td>mail</td>
+                <td>
+                    <span class="badge badge-success ">Onaylandı</span>
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+<script>
+    function showPopup() {
+        // Popup içeriğini oluştur
+        var popupContent = "<div style='text-align: center;'> <p> Staj başvurunuz 2023 - 2024 akademik takvimine göre eğitim - öğretim tarihiyle çakıştığı için reddedilmiştir. Üniversitemiz senato kararına göre eğitim-öğretim tarihi içerisinde staj yapılamaz.</p ><br> <button onclick='closePopup()'style='padding: 5px 10px; border-radius: 3px; background-color: #dc3545; color: #fff; border: none; cursor: pointer;'>Kapat</button></div> ";
+
+        // Popup penceresini oluştur
+        var popup = document.createElement('div');
+        popup.classList.add('popup');
+        popup.innerHTML = popupContent;
+
+        // Sayfa içeriğine popup penceresini ekle
+        document.body.appendChild(popup);
+
+        // Popup penceresini sayfanın ortasına yerleştir
+        var popupStyle = popup.style;
+        popupStyle.position = 'fixed';
+        popupStyle.top = '50%';
+        popupStyle.left = '50%';
+        popupStyle.transform = 'translate(-50%, -50%)';
+        popupStyle.backgroundColor = '#fff';
+        popupStyle.padding = '20px';
+        popupStyle.border = '2px solid #ccc';
+        popupStyle.borderRadius = '5px';
+        popupStyle.zIndex = '9999'; // Sayfanın içeriğinden üstte olmasını sağlar
+    }
+
+    function closePopup() {
+        var popup = document.querySelector('.popup');
+        popup.parentNode.removeChild(popup);
+    }
+</script>
+
+
+
+

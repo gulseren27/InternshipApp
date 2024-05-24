@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ETUModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Signature" Type="nvarchar" MaxLength="150" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date" Type="date" />
+          <Property Name="InternshipId" Type="int" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" />
+          <Property Name="YetkiliImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirmaMail" Type="nvarchar" MaxLength="150" />
+          <Property Name="YetkiliEmail" Type="nchar" MaxLength="150" />
+          <Property Name="YetkiliTel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Meslek" Type="nvarchar" MaxLength="50" />
+          <Property Name="YetkiliName" Type="nvarchar" MaxLength="50" />
+          <Property Name="YetkiliSurname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacultyId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="InternshipId" Type="int" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="FacultyId" />
+          </Key>
+          <Property Name="FacultyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Internship">
+          <Key>
+            <PropertyRef Name="InternshipId" />
+          </Key>
+          <Property Name="InternshipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="AcademicYear" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="FacultyId" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentDepartment" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentTel" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentsAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryDateToTheCompany" Type="date" />
+          <Property Name="StudentSignature" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyTel" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyAddres" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyGuyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyGuySurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyGuyTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyGuyMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyGuySignature" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyApprovalDate" Type="date" />
+          <Property Name="InternshipTime" Type="int" />
+          <Property Name="InternshipStart" Type="date" />
+          <Property Name="InternshipEnd" Type="date" />
+          <Property Name="Transcript" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cv" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentTC" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentSSK" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentFather" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentsMother" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentsPlaceOfBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentsDateOfBirth" Type="date" />
+          <Property Name="StudentsHealthInsurance" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentCommitteeChairmanName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentCommitteeChairmanSignature" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentCommitteeChairmanApproval" Type="datetime" />
+          <Property Name="DeaneryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeanerySignature" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeaneryApproval" Type="date" />
+          <Property Name="HeadOfDepartmentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="HeadOfDepartmentSignature" Type="nvarchar" MaxLength="50" />
+          <Property Name="HeadOfDepartmentApproval" Type="date" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsComplete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="InternshipId" Type="int" />
+          <Property Name="No" Type="nvarchar" MaxLength="10" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="SSK" Type="nchar" MaxLength="10" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MotherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="HealthInsurance" Type="nvarchar" MaxLength="50" />
+          <Property Name="Transcript" Type="nvarchar" MaxLength="50" />
+          <Property Name="CV" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentImg" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="150" />
+          <Property Name="Signature" Type="nvarchar" MaxLength="150" />
+          <Property Name="TC" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityContainer Name="ETUModelStoreContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Internship" EntityType="Self.Internship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ETUModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Signature" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="InternshipId" Type="Int32" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiliImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirmaMail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiliEmail" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="YetkiliTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Meslek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiliName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiliSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacultyId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="InternshipId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="FacultyId" />
+          </Key>
+          <Property Name="FacultyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Internship">
+          <Key>
+            <PropertyRef Name="InternshipId" />
+          </Key>
+          <Property Name="InternshipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="AcademicYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="FacultyId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentDepartment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentsAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryDateToTheCompany" Type="DateTime" Precision="0" />
+          <Property Name="StudentSignature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyGuyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyGuySurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyGuyTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyGuyMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyGuySignature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyApprovalDate" Type="DateTime" Precision="0" />
+          <Property Name="InternshipTime" Type="Int32" />
+          <Property Name="InternshipStart" Type="DateTime" Precision="0" />
+          <Property Name="InternshipEnd" Type="DateTime" Precision="0" />
+          <Property Name="Transcript" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentTC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentSSK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentFather" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentsMother" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentsPlaceOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentsDateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="StudentsHealthInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentCommitteeChairmanName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentCommitteeChairmanSignature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentCommitteeChairmanApproval" Type="DateTime" Precision="3" />
+          <Property Name="DeaneryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeanerySignature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeaneryApproval" Type="DateTime" Precision="0" />
+          <Property Name="HeadOfDepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadOfDepartmentSignature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadOfDepartmentApproval" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsComplete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="InternshipId" Type="Int32" />
+          <Property Name="No" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="SSK" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="HealthInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Transcript" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentImg" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Signature" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ETUEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Company" EntityType="Self.Company" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="Faculty" EntityType="Self.Faculty" />
+          <EntitySet Name="Internship" EntityType="Self.Internship" />
+          <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="User" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ETUModelStoreContainer" CdmEntityContainer="ETUEntities">
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="ETUModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="YetkiliSurname" ColumnName="YetkiliSurname" />
+                <ScalarProperty Name="YetkiliName" ColumnName="YetkiliName" />
+                <ScalarProperty Name="Meslek" ColumnName="Meslek" />
+                <ScalarProperty Name="YetkiliTel" ColumnName="YetkiliTel" />
+                <ScalarProperty Name="YetkiliEmail" ColumnName="YetkiliEmail" />
+                <ScalarProperty Name="FirmaMail" ColumnName="FirmaMail" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="YetkiliImg" ColumnName="YetkiliImg" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="InternshipId" ColumnName="InternshipId" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="ETUModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="InternshipId" ColumnName="InternshipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faculty">
+            <EntityTypeMapping TypeName="ETUModel.Faculty">
+              <MappingFragment StoreEntitySet="Faculty">
+                <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Internship">
+            <EntityTypeMapping TypeName="ETUModel.Internship">
+              <MappingFragment StoreEntitySet="Internship">
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+                <ScalarProperty Name="InternshipId" ColumnName="InternshipId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AcademicYear" ColumnName="AcademicYear" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentSurname" ColumnName="StudentSurname" />
+                <ScalarProperty Name="StudentDepartment" ColumnName="StudentDepartment" />
+                <ScalarProperty Name="StudentTel" ColumnName="StudentTel" />
+                <ScalarProperty Name="StudentMail" ColumnName="StudentMail" />
+                <ScalarProperty Name="StudentsAddress" ColumnName="StudentsAddress" />
+                <ScalarProperty Name="DeliveryDateToTheCompany" ColumnName="DeliveryDateToTheCompany" />
+                <ScalarProperty Name="StudentSignature" ColumnName="StudentSignature" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyTel" ColumnName="CompanyTel" />
+                <ScalarProperty Name="CompanyAddres" ColumnName="CompanyAddres" />
+                <ScalarProperty Name="CompanyGuyName" ColumnName="CompanyGuyName" />
+                <ScalarProperty Name="CompanyGuySurname" ColumnName="CompanyGuySurname" />
+                <ScalarProperty Name="CompanyGuyTitle" ColumnName="CompanyGuyTitle" />
+                <ScalarProperty Name="CompanyGuyMail" ColumnName="CompanyGuyMail" />
+                <ScalarProperty Name="CompanyGuySignature" ColumnName="CompanyGuySignature" />
+                <ScalarProperty Name="CompanyApprovalDate" ColumnName="CompanyApprovalDate" />
+                <ScalarProperty Name="InternshipTime" ColumnName="InternshipTime" />
+                <ScalarProperty Name="InternshipStart" ColumnName="InternshipStart" />
+                <ScalarProperty Name="InternshipEnd" ColumnName="InternshipEnd" />
+                <ScalarProperty Name="Transcript" ColumnName="Transcript" />
+                <ScalarProperty Name="Cv" ColumnName="Cv" />
+                <ScalarProperty Name="StudentTC" ColumnName="StudentTC" />
+                <ScalarProperty Name="StudentSSK" ColumnName="StudentSSK" />
+                <ScalarProperty Name="StudentFather" ColumnName="StudentFather" />
+                <ScalarProperty Name="StudentsMother" ColumnName="StudentsMother" />
+                <ScalarProperty Name="StudentsPlaceOfBirth" ColumnName="StudentsPlaceOfBirth" />
+                <ScalarProperty Name="StudentsDateOfBirth" ColumnName="StudentsDateOfBirth" />
+                <ScalarProperty Name="StudentsHealthInsurance" ColumnName="StudentsHealthInsurance" />
+                <ScalarProperty Name="StudentImg" ColumnName="StudentImg" />
+                <ScalarProperty Name="DepartmentCommitteeChairmanName" ColumnName="DepartmentCommitteeChairmanName" />
+                <ScalarProperty Name="DepartmentCommitteeChairmanSignature" ColumnName="DepartmentCommitteeChairmanSignature" />
+                <ScalarProperty Name="DepartmentCommitteeChairmanApproval" ColumnName="DepartmentCommitteeChairmanApproval" />
+                <ScalarProperty Name="DeaneryName" ColumnName="DeaneryName" />
+                <ScalarProperty Name="DeanerySignature" ColumnName="DeanerySignature" />
+                <ScalarProperty Name="DeaneryApproval" ColumnName="DeaneryApproval" />
+                <ScalarProperty Name="HeadOfDepartmentName" ColumnName="HeadOfDepartmentName" />
+                <ScalarProperty Name="HeadOfDepartmentSignature" ColumnName="HeadOfDepartmentSignature" />
+                <ScalarProperty Name="HeadOfDepartmentApproval" ColumnName="HeadOfDepartmentApproval" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="ETUModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="InternshipId" ColumnName="InternshipId" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="SSK" ColumnName="SSK" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="HealthInsurance" ColumnName="HealthInsurance" />
+                <ScalarProperty Name="Transcript" ColumnName="Transcript" />
+                <ScalarProperty Name="CV" ColumnName="CV" />
+                <ScalarProperty Name="StudentImg" ColumnName="StudentImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ETUModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

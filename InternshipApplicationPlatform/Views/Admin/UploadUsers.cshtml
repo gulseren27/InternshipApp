@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "UploadUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("UploadUsers", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="file">Excel dosyası seçiniz:</label>
+        <input type="file" name="file" id="file" class="form-control-file" accept=".xlsx,.xls">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Yükle</button>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">@TempData["Error"]</div>
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">@TempData["Success"]</div>
+}

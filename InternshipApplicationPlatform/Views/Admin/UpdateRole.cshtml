@@ -1,0 +1,49 @@
+﻿@model InternshipApplicationPlatform.Models.User
+@{
+    ViewBag.Title = "UpdateRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-label {
+        font-weight: bold;
+        color: black !important;
+    }
+
+    .form-control {
+        width: calc(100% - 20px);
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .btn-success {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<br />
+<h3 class="title-5 m-b-35" style="text-align: center;"><strong>Rollendirme Sayfası</strong></h3>
+
+<div class="form-group">
+    @using (Html.BeginForm("UpdateRole", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.UserId) <!-- Ensure UserId is sent with the form -->
+        @Html.DropDownList("role", new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Rolsüz", Value = "" },
+            new SelectListItem { Text = "Öğrenci", Value = "Öğrenci" },
+            new SelectListItem { Text = "Staj Yeri Yetkilisi", Value = "Staj Yeri Yetkilisi" },
+            new SelectListItem { Text = "Bölüm Staj Komitesi Başkanı", Value = "Bölüm Staj Komitesi Başkanı" },
+            new SelectListItem { Text = "Bölüm Başkanı", Value = "Bölüm Başkanı" },
+            new SelectListItem { Text = "Dekan Yardımcısı", Value = "Dekan Yardımcısı" }
+        }, "Rol Seçiniz", new { @class = "form-control" })
+
+        <br /> <br />
+        <button class="btn btn-success">Güncelle</button>
+    }
+</div>

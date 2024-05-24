@@ -1,0 +1,140 @@
+﻿@model InternshipApplicationPlatform.Models.ViewModel.Class
+@{
+    ViewBag.Title = "ReceivedByMe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #b5b5b578;
+            font-weight: bold;
+        }
+
+    #baslik {
+        text-align: center;
+    }
+</style>
+
+<h2 id="baslik">Gelen Başvurular</h2>
+<br />
+
+@{ string color = "";}
+<br />
+@using (Html.BeginForm("Index", "Item", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("p", null, new { @class = "search-textbox", placeholder = "Listede Ara" })
+        <input type="submit" value="Ara" />
+    </p>
+}
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+
+            <div class="card-body p-0">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 1%">#</th>
+                            <th scope="col" style="width: 20%">Öğrenci Ad-Soyad</th>
+                            <th scope="col" style="width: 25%">Açıklama</th>
+                            <th scope="col" style="width: 20%">Staj Türü</th>
+                            <th scope="col" style="width: 15%">Durum</th>
+                            <th scope="col" style="width: 20%">İşlemler</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Users.Where(u => u.Role == "Bölüm Başkanı").ToList())
+                        {
+
+                            foreach (var c in Model.Internships)
+                            {
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        <a> @c.StudentName </a> <a>@c.StudentSurname</a>
+
+                                    </td>
+                                    <td>
+                                        <span class="text-right">Description</span>
+                                    </td>
+                                    <td class="project_progress">
+                                        <span>Zorunlu Staj</span>
+                                    </td>
+                                    <td class="project-state">
+                                        <span class="badge badge-success">Onaylandı</span>
+                                        @*
+                                            @if (@item.IsActive)
+                                            {
+                                                <span class="badge badge-success">Aktif</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Pasif</span>
+                                            }*@
+                                    </td>
+                                    <td class="project-actions text-right">
+
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            Güncelle
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash-alt"></i>
+                                            Sil
+                                        </a>
+                                        <a>Aktifleştir/Pasifleştir</a>
+                                        @*
+        <a class="btn btn-sm @(!c.IsComplete ? "btn-warning" : "btn-light")" href="#">
+            <i class="fas fa-@(!c.Status ? "check" : "check")"></i>
+                                    @if (c.IsComplete)
+                                    {
+                                        <span>Pasifleştir</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Aktifleştir</span>
+                                    }
+                                    </a>*@
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+</body>
+</html>
+
+
+<a href="#" class="btn btn-info">Kaydet</a>
+
+

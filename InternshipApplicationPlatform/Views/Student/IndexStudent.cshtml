@@ -1,0 +1,244 @@
+﻿@model InternshipApplicationPlatform.Models.ViewModel.Class
+@{
+    ViewBag.Title = "IndexStudent";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand  ">
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/AdminLTE-3.0.4/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Brad Diesel
+                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Call me whenever you can...</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/AdminLTE-3.0.4/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        John Pierce
+                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">I got your message bro</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/AdminLTE-3.0.4/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Nora Silvester
+                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">The subject goes here</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
+                </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Content Wrapper. Contains page content -->
+        <div>
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Öğrenci Bilgileri</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+                                <li class="breadcrumb-item active">Profil</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+            @foreach (var item in Model.Users.Where(u => u.Role == "Öğrenci").ToList())
+            {
+                foreach (var c in Model.Students)
+                {
+                    
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="card" style="width: 100%;  height: 100vh;">
+
+                                    <!-- Profile Image -->
+                                    <div class="card card-primary card-outline">
+                                        <div class="card-body box-profile">
+                                            <div class="text-center" style="margin-left:50px;">
+                                                <img class="profile-user-img img-fluid img-circle"
+                                                     src="~/Image/Layout/gulseren.jpg"
+                                                     alt="User profile picture"
+                                                     style="float:left; height:130px; width:110px;">
+                                            </div>
+
+                                            <h3 class="profile-username" style="display: flex; padding-left: 320px;">@item.Name</h3>
+
+                                            <label class="text-muted" style="display: flex; padding-left: 200px;">Erzurum Teknik Üniversitesi | @c.DepartmentId</label>
+
+                                            <ul class="list-group list-group-unbordered mb-5 " style="margin-top:100px;">
+
+                                                <li class="list-group-item">
+                                                    <b>Okul Numarası</b> <a class="float-right">@c.No</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Telefon</b> <a class="float-right">@item.Tel</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Mail</b> <a class="float-right">@item.Email</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Adres</b> <a class="float-right">@item.Adress</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Ana Adı</b> <a class="float-right">@c.MotherName</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Baba Adı</b> <a class="float-right">@c.FatherName</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>T.C. Kimlik No</b> <a class="float-right">@item.TC</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>SSK No</b> <a class="float-right">@c.SSK</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Doğum Yeri</b> <a class="float-right">@c.PlaceOfBirth</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Doğum Tarihi</b> <a class="float-right">@c.DateOfBirth</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>Sağlık Güvencesi</b>
+                                                    <div class="dropdown float-right">
+                                                        <select class="form-control" id="healthInsuranceDropdown" name="HealthInsurance">
+                                                            <option value="default" @(c.HealthInsurance == "default" ? "selected" : "")>Seçiniz</option>
+                                                            <option value="Kendi" @(c.HealthInsurance == "Kendi" ? "selected" : "")>Kendisi</option>
+                                                            <option value="Annesi-Babasi" @(c.HealthInsurance == "Annesi-Babasi" ? "selected" : "")>Annesi/Babası</option>
+                                                            <option value="Yesilkart" @(c.HealthInsurance == "Yesilkart" ? "selected" : "")>Yeşil Kart</option>
+                                                            <option value="Yok" @(c.HealthInsurance == "Yok" ? "selected" : "")>Yok</option>
+                                                        </select>
+                                                    </div>
+                                                    <span id="selectedHealthInsurance" class="float-right"></span>
+                                                </li>
+
+                                            </ul>
+
+                                            <a href="/Student/UpdateInfo/@c.UserId" class="btn btn-primary btn-block" style="height:40px; width:100px; float:right"><b>Güncelle</b></a>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.row -->
+                        </div><!-- /.container-fluid -->
+                    </section>
+                    <!-- /.content -->
+                    }
+                }
+            
+                </div>
+
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+    <script>
+        function selectHealthInsurance() {
+            var dropdown = document.getElementById("healthInsuranceDropdown");
+            var selectedOption = dropdown.options[dropdown.selectedIndex].text;
+            document.getElementById("selectedHealthInsurance").textContent = selectedOption;
+        }
+
+
+    </script>
+</body>
+</html>
+

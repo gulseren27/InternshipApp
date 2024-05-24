@@ -1,0 +1,64 @@
+﻿
+@model InternshipApplicationPlatform.Models.User
+@{
+    ViewBag.Title = "UpdateInformation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .form-label {
+        font-weight: bold;
+        color: black !important;
+    }
+
+    .form-control {
+        width: calc(100% - 20px);
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .btn-success {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<br />
+<h3 class="title-5 m-b-35" style="text-align: center;"> <strong>Bölüm Başkanı Bilgileri Güncelleme Sayfası</strong></h3>
+
+@using (Html.BeginForm("UpdateInformation", "Department", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-group">
+
+    <label class="form-label">Bölüm Başkanı İmza</label>
+    <input type="file" src="~/Image/Department/x => x.Signature" name="imza" class="form-control-file" />
+    <br />
+    <label class="form-label">Görseli</label>
+    <input type="file" src="~/Image/Department/x => x." name="" class="form-control-file" />
+    <br />
+    <p style="color:black !important; font-weight:bold;">Bölüm Başkanı Bilgileri :</p>
+
+    <label class="form-label">Adı-Soyadı</label>
+    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+    <br />
+    <label class="form-label">Rolü</label>
+    @Html.TextBoxFor(x => x.Role, new { @class = "form-control" })
+    <br />
+    <label class="form-label">Telefon</label>
+    @Html.TextBoxFor(x => x.Tel, new { @class = "form-control" })
+    <br />
+    <label class="form-label">Email</label>
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    <br />
+    <label class="form-label">Adres</label>
+    @Html.TextBoxFor(x => x.Adress, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+
+</div>}
+
