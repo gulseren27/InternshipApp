@@ -1,4 +1,4 @@
-﻿using InternshipApplicationPlatform.Models;
+using InternshipApplicationPlatform.Models;
 using InternshipApplicationPlatform.Models.ViewModel;
 using System;
 using System.Linq;
@@ -21,6 +21,8 @@ namespace InternshipApplicationPlatform.Controllers
             return View();
         }
 
+
+        
         [HttpPost]
        public ActionResult SignIn(User u)
         {
@@ -32,6 +34,10 @@ namespace InternshipApplicationPlatform.Controllers
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(user.Email, false);
+                    // Kullanıcı bilgilerini session'a kaydet
+                    Session["UserId"] = user.UserId;
+                    Session["UserEmail"] = user.Email;
+                    Session["UserRole"] = user.Role;
 
                     if (user.Role == "Bölüm Staj Komitesi Başkanı")
                     {
@@ -64,7 +70,9 @@ namespace InternshipApplicationPlatform.Controllers
         // Çıkış
         public ActionResult SignOut()
         {
-            FormsAuthentication.SignOut(); 
+            FormsAuthentication.SignOut();
+            Session.Clear(); // Tüm oturum değişkenlerini temizle
+            Session.Abandon(); // Oturumu sonlandır
 
             return RedirectToAction("SignIn", "Login"); 
         }
@@ -157,6 +165,14 @@ namespace InternshipApplicationPlatform.Controllers
 
                     smtp.Send(mail);
 
+                    // Kullanıcının şifresini veritabanında güncelle
+                    var user = db.User.FirstOrDefault(x => x.Email == email);
+                    if (user != null)
+                    {
+                        user.Password = newPassword;
+                        db.SaveChanges();
+                    }
+
                     TempData["Message"] = "Şifre sıfırlama e-postası gönderildi.";
                 }
                 catch (SmtpException smtpEx)
@@ -176,8 +192,42 @@ namespace InternshipApplicationPlatform.Controllers
                 return View(model);
             }
         }
+        [Authorize(user.Role = "Bölüm Staj Komitesi Başkanı, Bölüm Başkanı")]
+        public class DepartmentController : Controller
+        {
+            public ActionResult Index()
+            {
+                return View();
+            }
+      }
 
-    }
+        [Authorize(user.Role = "Dekan Yardımcısı")]
+        public class FacultyController : Controller
+        {
+            public ActionResult IndexFaculty()
+            {
+                return View();
+            }
+        }
+
+        [Authorize(user.Role = "Öğrenci")]
+        public class StudentController : Controller
+        {
+            public ActionResult IndexStudent()
+            {
+                return View();
+            }
+        }
+
+        [Authorize(user.Role = "Staj Yeri Yetkilisi")]
+        public class CompanyController : Controller
+        {
+            public ActionResult Index()
+            {
+                return View();
+            }
+        }
+}
 
 
 
