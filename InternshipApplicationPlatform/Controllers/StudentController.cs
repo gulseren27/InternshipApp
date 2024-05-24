@@ -1,4 +1,4 @@
-﻿using InternshipApplicationPlatform.Models;
+using InternshipApplicationPlatform.Models;
 using InternshipApplicationPlatform.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -99,7 +99,7 @@ namespace InternshipApplicationPlatform.Controllers
             db.Internship.Add(newApp);
             db.SaveChanges();
 
-            return RedirectToAction("IndexStudent");
+            return RedirectToAction("Index","Company");
         }
 
 
@@ -111,7 +111,8 @@ namespace InternshipApplicationPlatform.Controllers
     }
         public ActionResult GetListPastApp()
         {
-            return View();
+            var completedInternships = db.Internship.Where(i => i.IsComplete.HasValue && i.IsComplete.Value).ToList();
+            return View(completedInternships);
         }
 
         [HttpGet]
