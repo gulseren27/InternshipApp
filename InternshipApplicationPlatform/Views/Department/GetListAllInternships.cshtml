@@ -1,4 +1,4 @@
-﻿@model InternshipApplicationPlatform.Models.ViewModel.Class
+@model InternshipApplicationPlatform.Models.ViewModel.Class
 
 @{
     ViewBag.Title = "GetListAllInternships";
@@ -65,45 +65,59 @@
     </thead>
     <tbody>
 
-        @foreach (var c in Model.Internships)
+           @foreach (var c in Model.Internships)
         {
             foreach (var x in Model.Users)
             {
 
 
-            <tr>
-                <td scope="row">2</td>
-                <td>@x.FullName</td>
-                <td>@c.CompanyName</td>
-                <td>@c.InternshipStart - @c.InternshipEnd</td>
-                <td>@c.InternshipTime</td>
-                <td>@x.Email</td>
-                <td>
-                    @if (c.Status == "Onaylandı")
-                    {
-                        <span class="badge badge-success">Onaylandı</span>
-                    }
-                    else if (c.Status == "Reddedildi")
-                    {
-                        <span class="badge badge-danger">Reddedildi</span>
-                        <span onclick="showPopup()" style="padding-left:20px;" class="badge badge-light">
-                            <i class="fas fa-book"></i> Oku
-                        </span>
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td scope="row">3</td>
-                <td>İlknur Akcaba </td>
-                <td>Larry the Bird</td>
-                <td>02.07.2020 - 02.10.2020</td>
-                <td>25</td>
-                <td>mail</td>
-                <td>
-                    <span class="badge badge-success ">Onaylandı</span>
-                </td>
-            </tr>
-            }
+        <tr>
+            <td scope="row">2</td>
+            <td>@x.FullName</td>
+            <td>@c.CompanyName</td>
+            <td>@c.InternshipStart - @c.InternshipEnd</td>
+            <td>@c.InternshipTime</td>
+            <td>@x.Email</td>
+            <td>
+                @if (c.Status == "Onaylandı")
+                {
+                    <span class="badge badge-success">Onaylandı</span>
+                }
+                else if (c.Status == "Reddedildi")
+                {
+                    <span class="badge badge-danger">Reddedildi</span>
+                    <span onclick="showPopup()" style="padding-left:20px;" class="badge badge-light">
+                        <i class="fas fa-book"></i> Oku
+                    </span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">1</td>
+            <td>Gülseren Zamir </td>
+            <td>A Şirketi</td>
+            <td>02.07.2020 - 02.10.2020</td>
+            <td>25</td>
+            <td>mail</td>
+            <td>
+                <span class="badge badge-success ">Onaylandı</span>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">2</td>
+            <td>İlknur Akcaba </td>
+            <td>B Şirketi</td>
+            <td>02.07.2020 - 02.10.2020</td>
+            <td>25</td>
+            <td>mail</td>
+            <td>
+                <span class="badge badge-danger">Reddedildi</span>
+                <span onclick="showPopup()" style="padding-left:20px;" class="badge badge-light">
+                    <i class="fas fa-book"></i> Oku
+                </span>
+            </td>
+        </tr>
+        }
         }
     </tbody>
 </table>
