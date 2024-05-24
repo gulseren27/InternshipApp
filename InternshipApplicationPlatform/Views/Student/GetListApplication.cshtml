@@ -1,4 +1,4 @@
-﻿@model InternshipApplicationPlatform.Models.ViewModel.Class
+@model InternshipApplicationPlatform.Models.ViewModel.Class
 
 
 @{ ViewBag.Title = "GetListApplication";
@@ -77,147 +77,147 @@
     </thead>
 
     <tbody>
-        @foreach (var c in Model.Internships)
-            {
-                <tr>
-                    <td scope="row">1</td>
-                    <td>@c.CompanyName </td>
-                    <td>@c.InternshipStart - @c.InternshipEnd</td>
-                    <td>@c.InternshipTime</td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                            <div class="progress-bar bg-gradient-blue" style="width: 20%"></div>
-                        </div>
-                        <span class="badge bg-gradient-blue ">20%</span>
-                    </td>
-                    <td>
+           @foreach (var c in Model.Internships)
+        {
+            <tr>
+                <td scope="row">1</td>
+                <td>@c.CompanyName </td>
+                <td>@c.InternshipStart - @c.InternshipEnd</td>
+                <td>@c.InternshipTime</td>
+                <td>
+                    <div class="progress progress-xs progress-striped active">
+                        <div class="progress-bar bg-gradient-blue" style="width: 20%"></div>
+                    </div>
+                    <span class="badge bg-gradient-blue ">20%</span>
+                </td>
+                <td>
+                    <span class="badge badge-dark">Kurum Onayında</span>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">2</td>
+                <td>@c.CompanyName </td>
+                <td>@c.InternshipStart - @c.InternshipEnd</td>
+                <td>@c.InternshipTime</td>
+                <td>
+                <td>
+                    <div class="progress progress-xs progress-striped active">
+                        <div class="progress-bar bg-gradient-cyan" style="width: @c.Status%"></div>
+                    </div>
+                    <span class="badge bg-gradient-cyan ">@c.Status%</span>
+                </td>
+                <td>
+                    @if (c.Status == "Kurum Onayında")
+                    {
                         <span class="badge badge-dark">Kurum Onayında</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">2</td>
-                    <td>@c.CompanyName </td>
-                    <td>@c.InternshipStart - @c.InternshipEnd</td>
-                    <td>@c.InternshipTime</td>
-                    <td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                            <div class="progress-bar bg-gradient-cyan" style="width: @c.Status%"></div>
-                        </div>
-                        <span class="badge bg-gradient-cyan ">@c.Status%</span>
-                    </td>
-                    <td>
-                        @if (c.Status == "Kurum Onayında")
-                        {
-                            <span class="badge badge-dark">Kurum Onayında</span>
-                        }
-                        else if (c.Status == "Staj Komitesi B. Onayında")
-                        {
-                            <span class="badge badge-secondary">Staj Komitesi B. Onayında</span>
-                        }
-                        else if (c.Status == "Bölüm Başkanı Onayında")
-                        {
-                            <span class="badge badge-primary">Bölüm Başkanı Onayında</span>
-                        }
-                        else if (c.Status == "Dekanlık Onayında")
-                        {
-                            <span class="badge badge-info">Dekanlık Onayında</span>
-                        }
-                        else if (c.Status == "SKS Onayında")
-                        {
-                            <span class="badge badge-warning">SKS Onayında</span>
-                        }
-                        else if (c.Status == "Onaylandı")
-                        {
-                            <span class="badge badge-success">Onaylandı</span>
-                        }
-                        else if (c.Status == "Reddedildi")
-                        {
-                            <span class="badge badge-danger">Reddedildi</span>
-                            <span onclick="showPopup()" style="padding-left:20px;" class="badge badge-light">
-                                <i class="fas fa-book"></i> Oku
-                            </span>
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">3</td>
-                    <td>Larry the Bird</td>
-                    <td>02.07.2020 - 02.10.2020</td>
-                    <td>25</td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                            <div class="progress-bar bg-gradient-fuchsia" style="width: 60%"></div>
-                        </div>
-                        <span class="badge bg-gradient-fuchsia ">60%</span>
-                    </td>
-                    <td>
-                        <span class="badge badge-primary ">Bölüm Başkanı Onayında</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">4</td>
-                    <td>Larry the Bird</td>
-                    <td>02.07.2020 - 02.10.2020</td>
-                    <td>25</td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                            <div class="progress-bar bg-gradient-indigo" style="width: 75%"></div>
-                        </div>
-                        <span class="badge bg-gradient-indigo ">75%</span>
-                    </td>
-                    <td>
-                        <span class="badge badge-info ">Dekanlık Onayında</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">5</td>
-                    <td>Larry the Bird</td>
-                    <td>02.07.2020 - 02.10.2020</td>
-                    <td>25</td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                            <div class="progress-bar bg-gradient-success" style="width: 100%"></div>
-                        </div>
-                        <span class="badge bg-gradient-success ">100%</span>
-                    </td>
-                    <td>
-                        <span class="badge badge-success ">Onaylandı</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">6</td>
-                    <td>Larry the Bird</td>
-                    <td>02.07.2020 - 02.10.2020</td>
-                    <td>25</td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                            <div class="progress-bar bg-gradient-yellow" style="width: 90%"></div>
-                        </div>
-                        <span class="badge bg-gradient-yellow ">90%</span>
-                    </td>
-                    <td>
-                        <span class="badge badge-warning ">SKS Onayında</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row"></td>
-                    <td>Larry the Bird</td>
-                    <td>02.07.2020 - 02.10.2020</td>
-                    <td>25</td>
-                    <td>
-                        <div class="progress progress-xs progress-striped active">
-                            <div class="progress-bar bg-gradient-danger" style="width: 100%"></div>
-                        </div>
-                        <span class="badge bg-gradient-danger ">100%</span>
-                    </td>
-                    <td>
-                        <span class="badge badge-danger ">Reddedildi </span><span onclick="showPopup()" style="padding-left:20px;" class="badge badge-light "><i class="fas fa-book"></i>Oku</span>
-                    </td>
-                </tr>
-            }
-        
-            </tbody>
+                    }
+                    else if (c.Status == "Staj Komitesi B. Onayında")
+                    {
+                        <span class="badge badge-secondary">Staj Komitesi B. Onayında</span>
+                    }
+                    else if (c.Status == "Bölüm Başkanı Onayında")
+                    {
+                        <span class="badge badge-primary">Bölüm Başkanı Onayında</span>
+                    }
+                    else if (c.Status == "Dekanlık Onayında")
+                    {
+                        <span class="badge badge-info">Dekanlık Onayında</span>
+                    }
+                    else if (c.Status == "SKS Onayında")
+                    {
+                        <span class="badge badge-warning">SKS Onayında</span>
+                    }
+                    else if (c.Status == "Onaylandı")
+                    {
+                        <span class="badge badge-success">Onaylandı</span>
+                    }
+                    else if (c.Status == "Reddedildi")
+                    {
+                        <span class="badge badge-danger">Reddedildi</span>
+                        <span onclick="showPopup()" style="padding-left:20px;" class="badge badge-light">
+                            <i class="fas fa-book"></i> Oku
+                        </span>
+                    }
+                </td>
+            </tr>
+        <tr>
+            <td scope="row">3</td>
+            <td>Larry Şirketi</td>
+            <td>02.07.2020 - 02.10.2020</td>
+            <td>25</td>
+            <td>
+                <div class="progress progress-xs progress-striped active">
+                    <div class="progress-bar bg-gradient-fuchsia" style="width: 60%"></div>
+                </div>
+                <span class="badge bg-gradient-fuchsia ">60%</span>
+            </td>
+            <td>
+                <span class="badge badge-primary ">Bölüm Başkanı Onayında</span>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">4</td>
+            <td>X Şirketi</td>
+            <td>02.07.2020 - 02.10.2020</td>
+            <td>15</td>
+            <td>
+                <div class="progress progress-xs progress-striped active">
+                    <div class="progress-bar bg-gradient-indigo" style="width: 75%"></div>
+                </div>
+                <span class="badge bg-gradient-indigo ">75%</span>
+            </td>
+            <td>
+                <span class="badge badge-info ">Dekanlık Onayında</span>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">5</td>
+            <td>Y Şirketi</td>
+            <td>02.07.2020 - 02.10.2020</td>
+            <td>60</td>
+            <td>
+                <div class="progress progress-xs progress-striped active">
+                    <div class="progress-bar bg-gradient-success" style="width: 100%"></div>
+                </div>
+                <span class="badge bg-gradient-success ">100%</span>
+            </td>
+            <td>
+                <span class="badge badge-success ">Onaylandı</span>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">6</td>
+            <td>Z Şirketi</td>
+            <td>02.07.2020 - 02.10.2020</td>
+            <td>25</td>
+            <td>
+                <div class="progress progress-xs progress-striped active">
+                    <div class="progress-bar bg-gradient-yellow" style="width: 90%"></div>
+                </div>
+                <span class="badge bg-gradient-yellow ">90%</span>
+            </td>
+            <td>
+                <span class="badge badge-warning ">SKS Onayında</span>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row"></td>
+            <td>A Şirketi</td>
+            <td>02.07.2020 - 02.10.2020</td>
+            <td>45</td>
+            <td>
+                <div class="progress progress-xs progress-striped active">
+                    <div class="progress-bar bg-gradient-danger" style="width: 100%"></div>
+                </div>
+                <span class="badge bg-gradient-danger ">100%</span>
+            </td>
+            <td>
+                <span class="badge badge-danger ">Reddedildi </span><span onclick="showPopup()" style="padding-left:20px;" class="badge badge-light "><i class="fas fa-book"></i>Oku</span>
+            </td>
+        </tr>
+        }
+
+    </tbody>
         </table>
 
 
