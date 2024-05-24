@@ -1,4 +1,4 @@
-﻿using InternshipApplicationPlatform.Models;
+using InternshipApplicationPlatform.Models;
 using InternshipApplicationPlatform.Models.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -101,9 +101,9 @@ namespace InternshipApplicationPlatform.Controllers
 
                 company.Signature = fileName;
             }
-           
-            company.YetkiliName = c.YetkiliName
-            company.YetkiliSurname=c.YetkiliSurname
+
+            company.YetkiliName = c.YetkiliName;
+            company.YetkiliSurname = c.YetkiliSurname;
             company.Meslek = c.Meslek;
             company.YetkiliEmail = c.YetkiliEmail;
             company.YetkiliTel = c.YetkiliTel;
@@ -112,15 +112,109 @@ namespace InternshipApplicationPlatform.Controllers
         }
 
 
-        //public ActionResult PastAppDetails()
-        //{
-        //    cs.Internships = db.Internship.Where(u => u.IsComplete == 1).ToList();
-        //    return View(cs);
-        //}
-        public ActionResult ReceivedAppDetails()
+        public ActionResult PastAppDetails()
         {
-            cs.Internships = db.Internship.Where(u => u.CompanyApprovalDate == null).ToList();
-            return View(cs);
+            var completedInternships = db.Internship.Where(i => i.IsComplete.HasValue && i.IsComplete.Value).ToList();
+            return View(completedInternships);
+        }
+
+        [HttpGet]
+        public ActionResult ReceivedAppDetails(int id)
+        {
+            // Kullanıcı bilgisini çek
+            User user = db.User.FirstOrDefault(u => u.UserId == id);
+
+            // Öğrenci bilgisini çek
+            Student student = db.Student.FirstOrDefault(s => s.UserId == id);
+
+            //Staj bilgisini çek
+            Internship intern = db.Internship.FirstOrDefault(i => i.UserId == id);
+
+            var c = db.User.Find(id);
+            var a = db.Student.Find(id);
+            var b = db.Internship.Find(id);
+            if (c == null || a==null || b == null)
+            {
+                return HttpNotFound();
+            }
+                ViewBag.User = user;
+                ViewBag.Student = student;
+                ViewBag.Internship = intern;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ReceivedAppDetails(Internship i, Student c, User u )
+        {
+           // cs.Internships = db.Internship.Where(m => m.CompanyApprovalDate == null).ToList();
+            var intern = db.Internship.FirstOrDefault(m => m.CompanyApprovalDate == null);
+            var student = db.Student.Find(c.StudentId);
+            var user = db.User.Find(u.UserId);
+
+            if (intern == null || student == null || user==null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new InternshipModel();
+
+                intern.StudentName = i.StudentName;
+                intern.StudentSurname = i.StudentSurname;
+                intern.Transcript = i.Transcript;
+                intern.StudentTel = i.StudentTel;
+                intern.StudentTC = i.StudentTC;
+                intern.StudentSSK = i.StudentSSK;
+                intern.StudentsPlaceOfBirth = i.StudentsPlaceOfBirth;
+                intern.StudentsMother = i.StudentsMother;
+                intern.StudentSignature = i.StudentSignature;
+                intern.StudentsHealthInsurance = i.StudentsHealthInsurance;
+                intern.StudentsDateOfBirth = i.StudentsDateOfBirth;
+                intern.StudentsAddress = i.StudentsAddress;
+                intern.StudentMail = i.StudentMail;
+                intern.StudentImg = i.StudentImg;
+                intern.StudentId = i.StudentId;
+                intern.StudentFather = i.StudentFather;
+                intern.StudentDepartment = i.StudentDepartment;
+                intern.InternshipTime = i.InternshipTime;
+                intern.InternshipStart = i.InternshipStart;
+                intern.InternshipEnd = i.InternshipEnd;
+                intern.HeadOfDepartmentSignature = i.HeadOfDepartmentSignature;
+                intern.HeadOfDepartmentName = i.HeadOfDepartmentName;
+                intern.HeadOfDepartmentApproval = i.HeadOfDepartmentApproval;
+                intern.FacultyId = i.FacultyId;
+                intern.DepartmentId = i.DepartmentId;
+                intern.DepartmentCommitteeChairmanSignature = i.DepartmentCommitteeChairmanSignature;
+                intern.DepartmentCommitteeChairmanName = i.DepartmentCommitteeChairmanName;
+                intern.DepartmentCommitteeChairmanApproval = i.DepartmentCommitteeChairmanApproval;
+                intern.DeliveryDateToTheCompany = i.DeliveryDateToTheCompany;
+                intern.DeanerySignature = i.DeanerySignature;
+                intern.DeaneryName = i.DeaneryName;
+                intern.DeaneryApproval = i.DeaneryApproval;
+                intern.Date = i.Date;
+                intern.Cv = i.Cv;
+                intern.CompanyTel = i.CompanyTel;
+                intern.CompanyName = i.CompanyName;
+                intern.CompanyId = i.CompanyId;
+                intern.CompanyGuyTitle = i.CompanyGuyTitle;
+                intern.CompanyGuySurname = i.CompanyGuySurname;
+                intern.CompanyGuySignature = i.CompanyGuySignature;
+                intern.CompanyGuyName = i.CompanyGuyName;
+                intern.CompanyGuyMail = i.CompanyGuyMail;
+                intern.CompanyApprovalDate = i.CompanyApprovalDate;
+                intern.CompanyAddres = i.CompanyAddres;
+                intern.AcademicYear = i.AcademicYear;
+                intern.IsComplete = i.IsComplete;
+                intern.Status = i.Status;
+                intern.UserId = i.UserId;
+
+            // Kullanıcıya geri bildirim göndermek için TempData 
+            TempData["SuccessMessage"] = "Başvuru fakülteye gönderildi.";
+            db.SaveChanges();
+            return View("IndexFaculty", "Faculty");
+
+
+          //  return View(cs.Internships); // Verileri View'a gönder
         }
 
         
