@@ -1,4 +1,4 @@
-﻿@model InternshipApplicationPlatform.Models.ViewModel.Class
+@model InternshipApplicationPlatform.Models.ViewModel.Class
 
 @{
     ViewBag.Title = "ReceivedByMe";
@@ -79,7 +79,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.Users.Where(u => u.Role == "Bölüm Başkanı").ToList())
+                        @foreach (var item in Model.Users.Where(u => u.Role == "Dekan Yardımcısı").ToList())
                         {
 
                             foreach (var c in Model.Internships)
@@ -100,15 +100,16 @@
                                     </td>
                                     <td class="project-state">
                                         <span class="badge badge-success">Onaylandı</span>
-                                        @*
-                                            @if (@item.IsActive)
-                                            {
-                                                <span class="badge badge-success">Aktif</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="badge badge-danger">Pasif</span>
-                                            }*@
+
+                                        @if (c.IsComplete.HasValue && c.IsComplete.Value)
+                                        {
+                                            <span class="badge badge-danger">Pasif</span>
+
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-success">Aktif</span>
+                                        }
                                     </td>
                                     <td class="project-actions text-right">
 
@@ -121,18 +122,18 @@
                                             Sil
                                         </a>
                                         <a>Aktifleştir/Pasifleştir</a>
-                                        @*
-                                            <a class="btn btn-sm @(!c.IsComplete ? "btn-warning" : "btn-light")" href="#">
-                                                <i class="fas fa-@(!c.Status ? "check" : "check")"></i>
-                                                                        @if (c.IsComplete)
-                                                                        {
-                                                                            <span>Pasifleştir</span>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <span>Aktifleştir</span>
-                                                                        }
-                                                                        </a>*@
+
+                                        @*       <a class="btn btn-sm @(!c.IsComplete.HasValue && c.IsComplete.Value ? "btn-warning" : "btn-light")" href="#">
+        <i class="fas fa-@(!c.Status ? "check" : "check")"></i>
+                                @if (c.IsComplete.HasValue && c.IsComplete.Value)
+                                {
+                                    <span>Pasifleştir</span>
+                                }
+                                else
+                                {
+                                    <span>Aktifleştir</span>
+                                }
+                                </a>*@
                                     </td>
                                 </tr>
                             }
